@@ -1,0 +1,225 @@
+/* ==========================
+   General Styles
+========================== */
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background: linear-gradient(to bottom, #ffe6f2, #fff0f5);
+  color: #333;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+}
+
+h1, h3 {
+  text-align: center;
+  color: #b30059;
+}
+
+/* ==========================
+   Navigation
+========================== */
+.nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: #f8c1d3;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #4b004b;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  background: #ffb6c1;
+  color: #fff;
+}
+
+/* ==========================
+   Hearts Animation
+========================== */
+#hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heart {
+  position: absolute;
+  color: #ff0066;
+  animation: float 6s linear forwards;
+  user-select: none;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  50% { transform: translateY(-100px) scale(1.2); opacity: 0.8; }
+  100% { transform: translateY(-800px) scale(0.8); opacity: 0; }
+}
+
+/* ==========================
+   Countdown
+========================== */
+.countdown {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #660033;
+  margin-top: 1rem;
+}
+
+/* ==========================
+   Cards
+========================== */
+.card {
+  background: #ffd6e8;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+#wishes-container p.wish {
+  background: #ffd6e8;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease-out;
+}
+
+#wishes-container p.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================
+   Quiz Form
+========================== */
+form label {
+  display: block;
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+button.quiz-submit, #loginBtn {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background: #b30059;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.quiz-submit:hover, #loginBtn:hover {
+  background: #ff0066;
+}
+
+/* ==========================
+   Gallery Grid
+========================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.photo-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.photo-card:hover img {
+  transform: scale(1.1);
+}
+
+.photo-card p {
+  position: absolute;
+  bottom: 0;
+  background: rgba(255, 182, 193, 0.8);
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem;
+  margin: 0;
+  color: #4b004b;
+  font-weight: bold;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/* ==========================
+   Lightbox
+========================== */
+#lightbox {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 15px;
+}
+
+/* ==========================
+   Responsive
+========================== */
+@media (max-width: 600px){
+  .nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  button.quiz-submit, #loginBtn {
+    width: 90%;
+  }
+
+  .photo-card p {
+    font-size: 0.9rem;
+    padding: 0.3rem;
+  }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Login - Sweet 16</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<main class="container">
+  <h1>Welcome to Your Sweet 16.  my babae ❤️</h1>
+  <input type="password" id="password" placeholder="Enter special password"/>
+  <button id="loginBtn">Login</button>
+  <div id="countdown" class="countdown"></div>
+</main>
+
+<script>
+const correctPassword = "SUDIKSHYA12";
+const loginBtn = document.getElementById("loginBtn");
+
+loginBtn.addEventListener("click", () => {
+  const pw = document.getElementById("password").value;
+  if(pw === correctPassword){
+    alert("Welcome Dikshya! Access granted.");
+    window.location.href = "home.html";
+  } else {
+    alert("Incorrect password! Try again.");
+  }
+});
+
+// Countdown to birthday
+const countdownEl = document.getElementById("countdown");
+const birthday = new Date("Dec 12, 2025 00:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = birthday - now;
+
+  const days = Math.floor(distance/(1000*60*60*24));
+  const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+  const seconds = Math.floor((distance%(1000*60))/1000);
+
+  countdownEl.innerText = distance > 0
+    ? `Birthday Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`
+    : "Happy Birthday Dikshya!";
+}, 1000);
+</script>
+</body>
+</html>

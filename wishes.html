@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wishes - Sweet 16</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html">Home</a>
+  <a href="wishes.html">Wishes</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="gallery.html">Gallery</a>
+</nav>
+
+<main class="container">
+  <h1>Heartfelt Wishes for Dikshya</h1>
+  <section id="wishes-container"></section>
+</main>
+
+<script>
+const wishesContainer = document.getElementById('wishes-container');
+
+const subjects = ["My love","My darling Dikshya","My princess","My sweetheart","My queen","My angel"];
+const verbs = ["I adore","I cherish","I love","I treasure","I admire"];
+const objects = ["your smile","your laughter","your kind heart","your beautiful soul","every moment with you"];
+const endings = ["more than words can say.","forever and always.","with all my heart.","beyond the stars.","till the end of time."];
+
+function generateParagraphWishes(count=50){
+  for(let i=0;i<count;i++){
+    let text="";
+    const sentences = Math.floor(Math.random()*4)+3;
+    for(let j=0;j<sentences;j++){
+      const s = subjects[Math.floor(Math.random()*subjects.length)];
+      const v = verbs[Math.floor(Math.random()*verbs.length)];
+      const o = objects[Math.floor(Math.random()*objects.length)];
+      const e = endings[Math.floor(Math.random()*endings.length)];
+      text+=`${s}, ${v} ${o} ${e} `;
+    }
+    const p = document.createElement('p');
+    p.className="wish fade";
+    p.innerText = text.trim();
+    wishesContainer.appendChild(p);
+  }
+}
+
+generateParagraphWishes();
+
+// Fade-in on scroll
+const faders = document.querySelectorAll(".fade");
+const appearOptions = { threshold:0.1, rootMargin:"0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver((entries,observer)=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add("appear");
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+faders.forEach(fader=>appearOnScroll.observe(fader));
+</script>
+</body>
+</html>
